@@ -34,6 +34,11 @@
   &__content {
     margin: auto 10px;
   }
+
+  &__input {
+    width: 100%;
+    font-size: inherit;
+  }
 }
 
 .row__button-container {

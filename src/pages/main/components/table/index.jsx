@@ -12,11 +12,7 @@ const Table = ({ tableData }) => {
           header={true}
         />
         {tableData.map((row) => (
-          <Row
-            className="table__row"
-            key={row.id}
-            data={[...Object.values(row)]}
-          />
+          <Row className="table__row" key={row.id} data={row} />
         ))}
       </div>
     </div>
