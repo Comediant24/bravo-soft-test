@@ -1,0 +1,14 @@
+.table {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px #3e3e3e solid;
+  }
+
+  &__row {
+    &:nth-last-child(1) {
+      margin-bottom: 8px;
+    }
+  }
+}
