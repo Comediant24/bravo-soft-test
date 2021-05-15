@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getUsersData } from '../../adapters/getUserData';
+import Button from './components/button';
 import Table from './components/table';
 import './style.scss';
 
 const Main = () => {
   const [data, setData] = useState(null);
-  console.log('data', data);
 
   useEffect(() => {
     getData();
@@ -25,6 +25,9 @@ const Main = () => {
       {data && (
         <>
           <h1 className="main__title">Данные пользователей</h1>
+          <div className="main__btn-container">
+            <Button />
+          </div>
           <section className="main__content">
             <Table tableData={data} />
           </section>

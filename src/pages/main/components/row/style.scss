@@ -1,22 +1,30 @@
 .row {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-  column-gap: 8px;
-  font-size: 16px;
-  word-break: break-word;
+  grid-template-columns: 100% 1fr;
+
+  .row__container {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+    column-gap: 8px;
+    font-size: 16px;
+    word-break: break-word;
+    position: relative;
+
+    &_header {
+      font-size: 18px;
+      line-height: 1.75;
+      font-weight: bold;
+    }
+  }
 
   &:nth-child(1) {
     border-bottom: 1px #3e3e3e solid;
   }
 
-  &_header {
-    font-size: 18px;
-    line-height: 1.75;
-    font-weight: bold;
-  }
-
   &__cell {
     border-left: 1px #3e3e3e solid;
+    min-height: 35px;
+    display: flex;
 
     &:nth-child(1) {
       border-left: none;
@@ -24,6 +32,12 @@
   }
 
   &__content {
-    margin: 5px 10px;
+    margin: auto 10px;
   }
+}
+
+.row__button-container {
+  display: flex;
+  gap: 5px;
+  padding-left: 15px;
 }

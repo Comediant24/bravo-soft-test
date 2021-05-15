@@ -1,0 +1,27 @@
+.button {
+  cursor: pointer;
+  padding: 0;
+
+  &__type {
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+
+    &_edit {
+      background-image: url(./images/edit_black_24dp.svg);
+    }
+
+    &_save {
+      background-image: url(./images/save_black_24dp.svg);
+    }
+
+    &_delete {
+      background-image: url(./images/delete_black_24dp.svg);
+    }
+
+    &_text {
+      width: auto;
+      height: auto;
+    }
+  }
+}
