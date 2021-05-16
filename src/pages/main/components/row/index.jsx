@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../button';
+import ErrorInput from '../errorInput';
 import './style.scss';
 
 export const Row = ({
@@ -11,7 +12,12 @@ export const Row = ({
   row,
   removeData,
 }) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  console.log('errors', errors);
 
   const [showBtn, setShowBtn] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -63,11 +69,21 @@ export const Row = ({
                 {i === 0 ? (
                   <p className="row__content">{el}</p>
                 ) : (
-                  <input
-                    className="row__content row__input"
-                    defaultValue={el}
-                    {...register([...Object.keys(data)][i])}
-                  />
+                  <>
+                    <input
+                      className="row__content row__input"
+                      defaultValue={el}
+                      {...register([...Object.keys(data)][i], {
+                        validate: (value) => value.length > 2,
+                      })}
+                    />
+                    {errors[[...Object.keys(data)][i]] && (
+                      <ErrorInput
+                        className="row__input-error"
+                        inputName={[...Object.keys(data)][i]}
+                      />
+                    )}
+                  </>
                 )}
               </div>
             ))}

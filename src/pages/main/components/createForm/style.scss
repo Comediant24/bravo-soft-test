@@ -10,13 +10,19 @@
 
   &__form {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr 0.8fr;
     gap: 20px;
+    row-gap: 8px;
   }
 
   &__input {
     width: 100%;
     box-sizing: border-box;
     padding: 6px 4px;
+  }
+
+  &__input-error {
+    grid-row: 2/3;
+    margin: 0;
   }
 }

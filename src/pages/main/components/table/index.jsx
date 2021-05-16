@@ -8,7 +8,7 @@ const Table = ({ tableData, editData, removeData }) => {
       <div className="table__container">
         <Row
           className="table__row"
-          data={['Number', 'First name', 'Last name', 'Age']}
+          data={['Number', 'First name', 'Last name', 'City']}
           header={true}
         />
         {tableData.map((row, i) => (

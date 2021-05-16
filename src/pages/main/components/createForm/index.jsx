@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import Button from '../button';
 import { useForm } from 'react-hook-form';
 import './style.scss';
+import ErrorInput from '../errorInput';
 
 const CreateForm = ({ input, createData }) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [showForm, setShowForm] = useState(false);
 
   const placeHolder = Object.keys(input[0]).slice(1);
+  console.log('errors', errors);
 
   const handleClick = () => {
     setShowForm(true);
@@ -35,12 +41,22 @@ const CreateForm = ({ input, createData }) => {
             className="formuser__form"
           >
             {placeHolder.map((input, i) => (
-              <input
-                className="formuser__input"
-                placeholder={input}
-                key={i}
-                {...register(input)}
-              ></input>
+              <>
+                <input
+                  className="formuser__input"
+                  placeholder={input}
+                  key={i}
+                  {...register(input, {
+                    validate: (value) => value.length > 2,
+                  })}
+                ></input>
+                {errors[input] && (
+                  <ErrorInput
+                    className="formuser__input-error"
+                    inputName={input}
+                  />
+                )}
+              </>
             ))}
           </form>
         </>
