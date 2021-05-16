@@ -17,21 +17,27 @@ export const Row = ({
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log('errors', errors);
 
   const [showBtn, setShowBtn] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+
+  const [loadSave, setLoadSave] = useState(false);
+  const [loadDelete, setLoadDelete] = useState(false);
 
   const handleEditClick = () => {
     setIsEdit(true);
   };
 
   const handleRemoveClick = () => {
-    removeData(data.id);
+    setLoadDelete(true);
+    removeData(data.id).finally(() => setLoadDelete(false));
   };
 
   const onSubmit = (userData) => {
-    editData({ id: data.id, ...userData }).then(() => setIsEdit(false));
+    setLoadSave(true);
+    editData({ id: data.id, ...userData })
+      .then(() => setIsEdit(false))
+      .finally(() => setLoadSave(false));
   };
 
   return (
@@ -93,9 +99,18 @@ export const Row = ({
           <div className="row__button-container">
             {!isEdit && <Button handleClick={handleEditClick} type="edit" />}
             {isEdit && (
-              <Button form={`save${row}`} typeBtn="submit" type="save" />
+              <Button
+                load={loadSave}
+                form={`save${row}`}
+                typeBtn="submit"
+                type="save"
+              />
             )}
-            <Button handleClick={handleRemoveClick} type="delete" />
+            <Button
+              load={loadDelete}
+              handleClick={handleRemoveClick}
+              type="delete"
+            />
           </div>
         )}
       </div>

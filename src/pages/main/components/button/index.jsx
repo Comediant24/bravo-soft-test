@@ -6,6 +6,7 @@ const Button = ({
   type = 'text',
   typeBtn = 'button',
   children,
+  load = false,
   ...rest
 }) => {
   const handleClickBtn = () => {
@@ -19,7 +20,9 @@ const Button = ({
       type={typeBtn}
       className={`${className} button`}
     >
-      <div className={`button__type button__type_${type}`}>{children}</div>
+      <div className={`button__type button__type_${load ? 'load' : type}`}>
+        {children}
+      </div>
     </button>
   );
 };
