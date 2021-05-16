@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bravo-soft-test/static/css/main.d328ea7d.chunk.css",
+    "main.js": "/bravo-soft-test/static/js/main.92848ac7.chunk.js",
+    "main.js.map": "/bravo-soft-test/static/js/main.92848ac7.chunk.js.map",
+    "runtime-main.js": "/bravo-soft-test/static/js/runtime-main.03c93262.js",
+    "runtime-main.js.map": "/bravo-soft-test/static/js/runtime-main.03c93262.js.map",
+    "static/js/2.344d1d89.chunk.js": "/bravo-soft-test/static/js/2.344d1d89.chunk.js",
+    "static/js/2.344d1d89.chunk.js.map": "/bravo-soft-test/static/js/2.344d1d89.chunk.js.map",
+    "static/js/3.5aa96ad1.chunk.js": "/bravo-soft-test/static/js/3.5aa96ad1.chunk.js",
+    "static/js/3.5aa96ad1.chunk.js.map": "/bravo-soft-test/static/js/3.5aa96ad1.chunk.js.map",
+    "index.html": "/bravo-soft-test/index.html",
+    "static/css/main.d328ea7d.chunk.css.map": "/bravo-soft-test/static/css/main.d328ea7d.chunk.css.map",
+    "static/js/2.344d1d89.chunk.js.LICENSE.txt": "/bravo-soft-test/static/js/2.344d1d89.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/bravo-soft-test/static/media/update_black_24dp.1a836f10.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03c93262.js",
+    "static/js/2.344d1d89.chunk.js",
+    "static/css/main.d328ea7d.chunk.css",
+    "static/js/main.92848ac7.chunk.js"
+  ]
+}
