@@ -3,7 +3,14 @@ import { useForm } from 'react-hook-form';
 import Button from '../button';
 import './style.scss';
 
-export const Row = ({ className, data, header = false }) => {
+export const Row = ({
+  className,
+  data,
+  header = false,
+  editData,
+  row,
+  removeData,
+}) => {
   const { register, handleSubmit } = useForm();
 
   const [showBtn, setShowBtn] = useState(false);
@@ -13,9 +20,12 @@ export const Row = ({ className, data, header = false }) => {
     setIsEdit(true);
   };
 
-  const onSubmit = (data) => {
-    console.log('data', data);
-    setIsEdit(false);
+  const handleRemoveClick = () => {
+    removeData(data.id);
+  };
+
+  const onSubmit = (userData) => {
+    editData({ id: data.id, ...userData }).then(() => setIsEdit(false));
   };
 
   return (
@@ -42,7 +52,7 @@ export const Row = ({ className, data, header = false }) => {
         )}
         {isEdit && (
           <form
-            id="save"
+            id={`save${row}`}
             onSubmit={handleSubmit(onSubmit)}
             className={`${
               header ? 'row__container_header' : ''
@@ -50,12 +60,15 @@ export const Row = ({ className, data, header = false }) => {
           >
             {[...Object.values(data)].map((el, i) => (
               <div key={i} className="row__cell">
-                <input
-                  className="row__content row__input"
-                  defaultValue={el}
-                  placeholder="bill"
-                  {...register([...Object.keys(data)][i])}
-                />
+                {i === 0 ? (
+                  <p className="row__content">{el}</p>
+                ) : (
+                  <input
+                    className="row__content row__input"
+                    defaultValue={el}
+                    {...register([...Object.keys(data)][i])}
+                  />
+                )}
               </div>
             ))}
           </form>
@@ -63,8 +76,10 @@ export const Row = ({ className, data, header = false }) => {
         {showBtn && !header && (
           <div className="row__button-container">
             {!isEdit && <Button handleClick={handleEditClick} type="edit" />}
-            {isEdit && <Button form="save" typeBtn="submit" type="save" />}
-            <Button type="delete" />
+            {isEdit && (
+              <Button form={`save${row}`} typeBtn="submit" type="save" />
+            )}
+            <Button handleClick={handleRemoveClick} type="delete" />
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUsersData } from '../../adapters/getUserData';
-import Button from './components/button';
+import { updateUser } from '../../adapters/updateUser';
+import { removeUser } from '../../adapters/removeUser';
 import Table from './components/table';
 import './style.scss';
 
@@ -12,8 +13,21 @@ const Main = () => {
   }, []);
 
   const getData = () => {
-    getUsersData()
+    return getUsersData()
       .then((users) => setData(users))
+      .catch((err) => console.log(err));
+  };
+
+  const editData = (data) => {
+    const { id, firstName, lastName, age } = data;
+    return updateUser(id, { firstName, lastName, age })
+      .then(() => getData())
+      .catch((err) => console.log(err));
+  };
+
+  const removeData = (id) => {
+    removeUser(id)
+      .then(() => getData())
       .catch((err) => console.log(err));
   };
 
@@ -25,11 +39,12 @@ const Main = () => {
       {data && (
         <>
           <h1 className="main__title">Данные пользователей</h1>
-          <div className="main__btn-container">
-            <Button />
-          </div>
           <section className="main__content">
-            <Table tableData={data} />
+            <Table
+              tableData={data}
+              editData={editData}
+              removeData={removeData}
+            />
           </section>
         </>
       )}
