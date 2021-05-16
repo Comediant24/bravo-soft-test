@@ -1,0 +1,22 @@
+.formuser {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__btn {
+    padding: 4px;
+    margin-right: auto;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    gap: 20px;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 4px;
+  }
+}

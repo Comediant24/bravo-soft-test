@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 const Button = ({
+  className = '',
   handleClick,
   type = 'text',
   typeBtn = 'button',
@@ -16,7 +17,7 @@ const Button = ({
       {...rest}
       onClick={handleClickBtn}
       type={typeBtn}
-      className="button"
+      className={`${className} button`}
     >
       <div className={`button__type button__type_${type}`}>{children}</div>
     </button>
