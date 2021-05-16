@@ -41,11 +41,10 @@ const CreateForm = ({ input, createData }) => {
             className="formuser__form"
           >
             {placeHolder.map((input, i) => (
-              <>
+              <span key={i}>
                 <input
                   className="formuser__input"
                   placeholder={input}
-                  key={i}
                   {...register(input, {
                     validate: (value) => value.length > 2,
                   })}
@@ -56,7 +55,7 @@ const CreateForm = ({ input, createData }) => {
                     inputName={input}
                   />
                 )}
-              </>
+              </span>
             ))}
           </form>
         </>
